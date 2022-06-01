@@ -1,4 +1,4 @@
-# ConsoleApp_Bank
+# CS Technical Test
 
 Console project to showcase the requirements of the technical test.
 This project will use the Factory, Strategy/RuleEngine and Depedency Injecton patterns to solve the techinical test specifications.
