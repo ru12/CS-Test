@@ -7,7 +7,7 @@ The project was built upon .NET 5 Framework to try and be most compatible and bu
 
 The solution built for the SQL part is present in the main folder as two scripts:
 
-1 - SCRIPT_CREATE_MAIN.sql (Created and initialize databases).
+1 - SCRIPT_CREATE_MAIN.sql (Create and initialize databases).
 2 - RUN SCRIPT.sql ( Sample run query to show case the solution).
 
 Rafael Ruiz
