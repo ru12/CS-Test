@@ -25,7 +25,8 @@ namespace ConsoleApp_Bank.RulesEngine.Rules
         internal static Func<T, bool> GenericRuleExpressionBuilder<T>(ITradeRiskCategoryRuleStrategy genericRule)
         {
             Expression expressionFinal = null;
-            var parameterExpression = Expression.Parameter(Type.GetType($"{genericRule.TypeNameSpace}.{genericRule.TypeName}"), genericRule.TypeName);
+            var parameterExpression = Expression.Parameter(typeof(T), typeof(T).Name);
+            //var parameterExpression = Expression.Parameter(Type.GetType($"{genericRule.TypeNameSpace}.{genericRule.TypeName}"), genericRule.TypeName);
 
             foreach (var c in genericRule.Conditions)
             {

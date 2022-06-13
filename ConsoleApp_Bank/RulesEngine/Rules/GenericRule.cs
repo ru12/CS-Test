@@ -19,13 +19,11 @@ namespace ConsoleApp_Bank.RulesEngine.Rules
         public string TypeName { get; }
         public string TypeNameSpace { get; }
 
-        internal GenericRule(string name, List<GenericCondition> conditions, string typeName, string typeNameSpace)
+        internal GenericRule(string name, List<GenericCondition> conditions)
         {
  
             Name = name;
             Conditions = conditions;
-            TypeName = typeName;
-            TypeNameSpace = typeNameSpace;
         }
       
 

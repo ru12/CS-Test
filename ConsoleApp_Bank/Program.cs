@@ -28,14 +28,23 @@ namespace ConsoleApp_Bank
             };
 
 
-            var rules = new TradeRiskCategoryRulesFactory().CreateRules();
-            var ruleEngine = new TradeRiskCategoryStrategy(rules);
-
-            var tradeCategories = ruleEngine.TradeRiskCategorize(portifolio);
-            foreach (var tradeRisk in tradeCategories)
+            foreach (var value in Enum.GetValues(typeof(Contextos)))
             {
-                Console.WriteLine(tradeRisk);
+                var rules = new TradeRiskCategoryRulesFactory().CreateRulesStragy((Contextos)value);
+                var ruleEngine = new TradeRiskCategoryStrategy(rules);
+                var tradeCategories = ruleEngine.TradeRiskCategorize(portifolio);
+                
+                Console.WriteLine($"--Contexto: {value}");
+
+                foreach (var tradeRisk in tradeCategories)
+                {
+                    Console.WriteLine(tradeRisk);
+                }
             }
+           
+            
+
+           
         }
     }
 }

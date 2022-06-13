@@ -17,7 +17,7 @@ namespace ConsoleApp_Bank.Tests
         [Trait("Functionality", "Must Create Rules")]
         public void MustCreateRules()
         {
-            Assert.NotEmpty(new TradeRiskCategoryRulesFactory().CreateRules());
+            Assert.NotEmpty(TradeRiskCategoryRulesFactory.CreateDefaultRules());
         }
 
         [Fact(DisplayName = "Test 2 - Technical test validation")]
@@ -34,7 +34,7 @@ namespace ConsoleApp_Bank.Tests
                 new GenericExempleTrade4(3000000,"Public"),
             };
 
-            var rules = new TradeRiskCategoryRulesFactory().CreateRules();
+            var rules = TradeRiskCategoryRulesFactory.CreateDefaultRules();
             var ruleEngine = new TradeRiskCategoryStrategy(rules);
 
             //var tradeCategories = portifolio.Select(a => ruleEngine.TradeRiskCategorize(a))?.ToList();
@@ -46,7 +46,7 @@ namespace ConsoleApp_Bank.Tests
         [Trait("Functionality", "Must categorize risk on a ramdom value")]
         public void MustCategorizeRiskOnRandomValue()
         {
-            var rules = new TradeRiskCategoryRulesFactory().CreateRules();
+            var rules = TradeRiskCategoryRulesFactory.CreateDefaultRules();
             var ruleEngine = new TradeRiskCategoryStrategy(rules);
 
             var rdn = new Random();
@@ -69,7 +69,7 @@ namespace ConsoleApp_Bank.Tests
                 portifolio.Add(new GenericExempleTrade1(rdn.Next(0, 1000001), "Public"));
             };
 
-            var rules = new TradeRiskCategoryRulesFactory().CreateRules();
+            var rules = TradeRiskCategoryRulesFactory.CreateDefaultRules();
             var ruleEngine = new TradeRiskCategoryStrategy(rules);
 
             //var tradeCategories = portifolio.Select(a => ruleEngine.TradeRiskCategorize(a))?.ToList();
@@ -87,7 +87,7 @@ namespace ConsoleApp_Bank.Tests
             double maximum = double.MaxValue;
             double testValue = rnd.NextDouble() * (maximum - minimum) + minimum;
 
-            var rules = new TradeRiskCategoryRulesFactory().CreateRules();
+            var rules = TradeRiskCategoryRulesFactory.CreateDefaultRules();
             var ruleEngine = new TradeRiskCategoryStrategy(rules);
 
             var tradeCategory = ruleEngine.TradeRiskCategorize(new GenericExempleTrade1(testValue, clientSector));
@@ -104,7 +104,7 @@ namespace ConsoleApp_Bank.Tests
             double maximum = double.MaxValue;
             double testValue = rnd.NextDouble() * (maximum - minimum) + minimum;
 
-            var rules = new TradeRiskCategoryRulesFactory().CreateRules();
+            var rules = TradeRiskCategoryRulesFactory.CreateDefaultRules();
             var ruleEngine = new TradeRiskCategoryStrategy(rules);
 
             var tradeCategory = ruleEngine.TradeRiskCategorize(new GenericExempleTrade1(3000000, clientSector));
@@ -121,7 +121,7 @@ namespace ConsoleApp_Bank.Tests
             double maximum = 999999.99;
             double testValue = rnd.NextDouble() * (maximum - minimum) + minimum;
             
-            var rules = new TradeRiskCategoryRulesFactory().CreateRules();
+            var rules = TradeRiskCategoryRulesFactory.CreateDefaultRules(); 
             var ruleEngine = new TradeRiskCategoryStrategy(rules);
 
             var tradeCategory = ruleEngine.TradeRiskCategorize(new GenericExempleTrade2(testValue, clientSector));

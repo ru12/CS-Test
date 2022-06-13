@@ -16,10 +16,23 @@ namespace ConsoleApp_Bank.RulesEngine.Rules
         /// Further implementations should extend the classs to retrieve parameters from a database and create dynamic rules based on a configurations/parameter database table or API.
         /// This factory class will implement hardcoded rules just as a demonstration of custom rule engile implementation.
         /// </summary>
-        internal List<ITradeRiskCategoryRuleStrategy> CreateRules()
+        /// 
+
+        private readonly Dictionary<Contextos, ITradeRiskCategory> _ruleStrategy;
+
+        public TradeRiskCategoryRulesFactory()
+        {
+            _ruleStrategy = new Dictionary<Contextos, ITradeRiskCategory>();
+            _ruleStrategy.Add(Contextos.Contabil, new TradeRiskCategoryContabil());
+            _ruleStrategy.Add(Contextos.Offshore, new TradeRiskCategoryOffshore());
+            _ruleStrategy.Add(Contextos.Onshore, new TradeRiskCategoryOnshore());
+
+        }
+
+        internal static List<ITradeRiskCategoryRuleStrategy> CreateDefaultRules()
         {
             var rules = new List<ITradeRiskCategoryRuleStrategy>();
-         
+
 
             //HIGHRISK
             var conditionsHighRisk = new List<GenericCondition>
@@ -40,7 +53,7 @@ namespace ConsoleApp_Bank.RulesEngine.Rules
                     },
                 };
 
-            rules.Add(new GenericRule("HIGHRISK", conditionsHighRisk, "ITrade", "ConsoleApp_Bank.Model"));
+            rules.Add(new GenericRule("HIGHRISK", conditionsHighRisk));
 
             //MEDIUMRISK
             var conditionsMediumRisk = new List<GenericCondition>
@@ -61,7 +74,7 @@ namespace ConsoleApp_Bank.RulesEngine.Rules
                     },
                 };
 
-            rules.Add(new GenericRule("MEDIUMRISK", conditionsMediumRisk, "ITrade", "ConsoleApp_Bank.Model"));
+            rules.Add(new GenericRule("MEDIUMRISK", conditionsMediumRisk));
 
 
             //LOWRISK
@@ -83,11 +96,20 @@ namespace ConsoleApp_Bank.RulesEngine.Rules
                     },
                 };
 
-            rules.Add(new GenericRule("LOWRISK", conditionsLowRisk, "ITrade", "ConsoleApp_Bank.Model"));
+            rules.Add(new GenericRule("LOWRISK", conditionsLowRisk));
 
             return rules;
         }
 
-       
+        internal List<ITradeRiskCategoryRuleStrategy> CreateRulesStragy(Contextos contexto)
+        {
+            if (_ruleStrategy.ContainsKey(contexto))
+                return _ruleStrategy[contexto].CreateRules();
+
+            return TradeRiskCategoryRulesFactory.CreateDefaultRules();
+
+        }
+
+
     }
 }

@@ -5,7 +5,15 @@ VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp_Bank", "ConsoleApp_Bank\ConsoleApp_Bank.csproj", "{4267EF56-FBC4-4E01-9FF5-E0CF9482DFFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp_Bank.Tests", "ConsoleApp_Bank.Tests\ConsoleApp_Bank.Tests.csproj", "{FEE0CF10-B066-4AF6-9030-EB9637D3D1F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp_Bank.Tests", "ConsoleApp_Bank.Tests\ConsoleApp_Bank.Tests.csproj", "{FEE0CF10-B066-4AF6-9030-EB9637D3D1F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Solution", "SQL Solution", "{716964E4-53C1-4848-964C-74011E5F5412}"
+	ProjectSection(SolutionItems) = preProject
+		1 - SCRIPT_CREATE_MAIN.sql = 1 - SCRIPT_CREATE_MAIN.sql
+		2 - RUN SCRIPT.sql = 2 - RUN SCRIPT.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET Solution", ".NET Solution", "{4A1BF4B0-F81C-4887-82F5-D53BC2996D70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +32,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4267EF56-FBC4-4E01-9FF5-E0CF9482DFFB} = {4A1BF4B0-F81C-4887-82F5-D53BC2996D70}
+		{FEE0CF10-B066-4AF6-9030-EB9637D3D1F2} = {4A1BF4B0-F81C-4887-82F5-D53BC2996D70}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {550BAC0F-B250-427C-AC8B-DAEC7122D145}
